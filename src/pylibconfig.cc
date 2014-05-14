@@ -155,6 +155,11 @@ public:
         config->lookup ( path ).add ( libconfig::Setting::TypeString ) = value;
     }
 
+    void appendGroup ( const char * path )
+    {
+        config->lookup ( path ).add ( libconfig::Setting::TypeGroup );
+    }
+
     void setValue_bool ( const char * path, bool value )
     {
         config->lookup ( path ) = value;
@@ -229,5 +234,6 @@ BOOST_PYTHON_MODULE ( pylibconfig )
         .def("setValue", &pyConfig::setValue_int )
         .def("setValue", &pyConfig::setValue_str )
         .def("appendToList", &pyConfig::appendToList )
+        .def("appendGroup", &pyConfig::appendGroup )
     ;
 }
